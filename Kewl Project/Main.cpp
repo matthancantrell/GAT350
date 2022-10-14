@@ -71,8 +71,14 @@ int main(int argc, char** argv)
 	neu::Engine::Instance().Register();
 	LOG("Engine Initialized...");
 
+	neu::g_audioSystem.Initialize();
+	LOG("Audio System Initialized...");
+
 	neu::g_renderer.CreateWindow("Neumont", 800, 600);
 	LOG("Window Initialized...");
+
+	neu::g_audioSystem.AddAudio("sound", "transition.mp3");
+	neu::g_audioSystem.PlayAudio("sound");
 
 	// create vertex buffer
 
@@ -126,8 +132,10 @@ int main(int argc, char** argv)
 	// Create Texture
 	std::shared_ptr<neu::Texture> texture1 = neu::g_resources.Get<neu::Texture>("Textures/yuumi.jpg");
 	std::shared_ptr<neu::Texture> texture2 = neu::g_resources.Get<neu::Texture>("Textures/Mood.png");
+	std::shared_ptr<neu::Texture> texture3 = neu::g_resources.Get<neu::Texture>("Textures/batman.jpg");
 	texture1->Bind();
 	//texture2->Bind();
+	texture3->Bind();
 	
 	GLint uniform1 = glGetUniformLocation(program, "scale");
 	GLint uniform2 = glGetUniformLocation(program, "tint");
@@ -144,7 +152,7 @@ int main(int argc, char** argv)
 		neu::Engine::Instance().Update();
 
 		if (neu::g_inputSystem.GetKeyState(neu::key_escape) == neu::InputSystem::KeyState::Pressed) quit = true;
-		glUniform1f(uniform1, std::sin(neu::g_time.time));
+		glUniform1f(uniform1, std::sin(neu::g_time.time * 2.5f));
 		mx = glm::eulerAngleXYZ(0.0f, 0.0f, neu::g_time.time);
 		glUniformMatrix4fv(uniform3, 1, GL_FALSE, glm::value_ptr(mx));
 

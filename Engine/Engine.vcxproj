@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -207,7 +207,9 @@
     <ClCompile Include="Physics\ContactListener.cpp" />
     <ClCompile Include="Physics\PhysicsSystem.cpp" />
     <ClCompile Include="Renderer\Font.cpp" />
+    <ClCompile Include="Renderer\Material.cpp" />
     <ClCompile Include="Renderer\Model.cpp" />
+    <ClCompile Include="Renderer\Program.cpp" />
     <ClCompile Include="Renderer\Renderer.cpp" />
     <ClCompile Include="Renderer\Shader.cpp" />
     <ClCompile Include="Renderer\Text.cpp" />
@@ -260,7 +262,9 @@
     <ClInclude Include="Physics\ContactListener.h" />
     <ClInclude Include="Physics\PhysicsSystem.h" />
     <ClInclude Include="Renderer\Font.h" />
+    <ClInclude Include="Renderer\Material.h" />
     <ClInclude Include="Renderer\Model.h" />
+    <ClInclude Include="Renderer\Program.h" />
     <ClInclude Include="Renderer\Renderer.h" />
     <ClInclude Include="Renderer\Shader.h" />
     <ClInclude Include="Renderer\Text.h" />
@@ -271,6 +275,7 @@
     <ClInclude Include="Serialization\Serializable.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\Build\Assets\Materials\box.mtrl" />
     <None Include="..\Build\Assets\Shaders\basic.frag" />
     <None Include="..\Build\Assets\Shaders\basic.prog" />
     <None Include="..\Build\Assets\Shaders\basic.vert" />

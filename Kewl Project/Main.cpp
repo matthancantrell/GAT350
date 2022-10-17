@@ -26,7 +26,6 @@ float points[] = {
 
 };
 
-
 glm::vec3 colors[] = {
 	{1,0,0},
 	{0,1,0},
@@ -117,10 +116,6 @@ int main(int argc, char** argv)
 	glBindBuffer(GL_ARRAY_BUFFER, tvbo);
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, NULL);
 
-	// create shader
-	std::shared_ptr<neu::Shader> vs = neu::g_resources.Get<neu::Shader>("Shaders/basic.vert", GL_VERTEX_SHADER);
-	std::shared_ptr<neu::Shader> fs = neu::g_resources.Get<neu::Shader>("Shaders/basic.frag", GL_FRAGMENT_SHADER);
-
 	// create program
 	std::shared_ptr<neu::Program> program = neu::g_resources.Get<neu::Program>("Shaders/basic.prog", GL_PROGRAM);
 	program->Link();
@@ -130,24 +125,12 @@ int main(int argc, char** argv)
 	std::shared_ptr<neu::Material> material = neu::g_resources.Get<neu::Material>("Materials/box.mtrl");
 	material->Bind();
 
-	// Create Texture
-	std::shared_ptr<neu::Texture> texture1 = neu::g_resources.Get<neu::Texture>("Textures/yuumi.jpg");
-	std::shared_ptr<neu::Texture> texture2 = neu::g_resources.Get<neu::Texture>("Textures/Mood.png");
-	std::shared_ptr<neu::Texture> texture3 = neu::g_resources.Get<neu::Texture>("Textures/batman.jpg");
-	//texture1->Bind();
-	//texture2->Bind();
-	//texture3->Bind();
-
 	glm::mat4 mx{ 1 };
 	mx = glm::scale(glm::vec3{ 0.5, 0.5, 0.5 });
 
-	//material->GetProgram()->SetUniform("scale", std::sin(neu::g_time.time * 3));
-	//material->GetProgram()->SetUniform("tint", glm::vec3{1, 0, 0});
-	//material->GetProgram()->SetUniform("transform", mx);
-
-	program->SetUniform("scale", std::sin(neu::g_time.time * 3));
-	program->SetUniform("tint", glm::vec3{ 1, 0, 0 });
-	program->SetUniform("transform", mx);
+	material->GetProgram()->SetUniform("scale", std::sin(neu::g_time.time * 3));
+	material->GetProgram()->SetUniform("tint", glm::vec3{1, 0, 0});
+	material->GetProgram()->SetUniform("transform", mx);
 
 	bool quit = false;
 	while (!quit)
@@ -155,9 +138,9 @@ int main(int argc, char** argv)
 		neu::Engine::Instance().Update();
 
 		if (neu::g_inputSystem.GetKeyState(neu::key_escape) == neu::InputSystem::KeyState::Pressed) quit = true;
-		glUniform1f(program->m_uniforms["scale"], std::sin(neu::g_time.time * 2.5f));
+		glUniform1f(material->GetProgram()->m_uniforms["scale"], std::sin(neu::g_time.time * 2.5f));
 		mx = glm::eulerAngleXYZ(0.0f, 0.0f, neu::g_time.time);
-		glUniformMatrix4fv(program->m_uniforms["transform"], 1, GL_FALSE, glm::value_ptr(mx));
+		glUniformMatrix4fv(material->GetProgram()->m_uniforms["transform"], 1, GL_FALSE, glm::value_ptr(mx));
 
 		neu::g_renderer.BeginFrame();
 		glDrawArrays(GL_TRIANGLES, 0, 6);

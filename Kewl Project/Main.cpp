@@ -154,12 +154,13 @@ int main(int argc, char** argv)
 	std::shared_ptr<neu::Material> material = neu::g_resources.Get<neu::Material>("Materials/box.mtrl");
 	material->Bind();
 
-	glm::mat4 mx{ 1 };
-	mx = glm::scale(glm::vec3{ 0.5, 0.5, 0.5 });
+	material->GetProgram()->SetUniform("scale", 0.5f);
+	material->GetProgram()->SetUniform("tint", glm::vec3{ 1, 0, 0 });
 
-	material->GetProgram()->SetUniform("scale", std::sin(neu::g_time.time * 3));
-	material->GetProgram()->SetUniform("tint", glm::vec3{1, 0, 0});
-	material->GetProgram()->SetUniform("transform", mx);
+	glm::mat4 model{ 1 };
+	glm::mat4 projection = glm::perspective(45.0f, (float)neu::g_renderer.GetWidth() / (float)neu::g_renderer.GetHeight(), 1.0f, 100.0f);
+
+	glm::vec3 cameraPosition = glm::vec3{ 0, 2, 2 };
 
 	bool quit = false;
 	while (!quit)
@@ -167,9 +168,20 @@ int main(int argc, char** argv)
 		neu::Engine::Instance().Update();
 
 		if (neu::g_inputSystem.GetKeyState(neu::key_escape) == neu::InputSystem::KeyState::Pressed) quit = true;
-		glUniform1f(material->GetProgram()->m_uniforms["scale"], std::sin(neu::g_time.time * 2.5f));
-		mx = glm::eulerAngleXYZ(0.0f, neu::g_time.time, neu::g_time.time);
-		glUniformMatrix4fv(material->GetProgram()->m_uniforms["transform"], 1, GL_FALSE, glm::value_ptr(mx));
+
+		// Add Input To Move Camera
+		if (neu::g_inputSystem.GetKeyState(neu::key_left) == neu::InputSystem::KeyState::Held) cameraPosition += glm::vec3{ 0.25, 0, 0 };
+		if (neu::g_inputSystem.GetKeyState(neu::key_right) == neu::InputSystem::KeyState::Held) cameraPosition += glm::vec3{ -0.25, 0, 0 };
+		if (neu::g_inputSystem.GetKeyState(neu::key_up) == neu::InputSystem::KeyState::Held) cameraPosition += glm::vec3{ 0, 0.5, 0 };
+		if (neu::g_inputSystem.GetKeyState(neu::key_down) == neu::InputSystem::KeyState::Held) cameraPosition += glm::vec3{ 0, -0.5, 0 };
+
+
+		glm::mat4 view = glm::lookAt(cameraPosition, glm::vec3{ 0 , 0, 0 }, glm::vec3{ 0, 1, 0 });
+		// material->GetProgram()->SetUniform("scale", std::sin(neu::g_time.time));
+		model = glm::eulerAngleXYZ(0.0f, neu::g_time.time, 0.0f);
+		//material->GetProgram()->SetUniform("transform", model);
+		glm::mat4 mvp = projection * view * model;
+		material->GetProgram()->SetUniform("mvp", mvp);
 
 		neu::g_renderer.BeginFrame();
 		glDrawArrays(GL_TRIANGLES, 0, 36);

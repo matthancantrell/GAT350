@@ -123,25 +123,7 @@ int main(int argc, char** argv)
 	neu::g_audioSystem.AddAudio("sound", "transition.mp3");
 	neu::g_audioSystem.PlayAudio("sound");
 
-	// create vertex buffer
-
-	//position
-	GLuint pvbo = 0;
-	glGenBuffers(1, &pvbo);
-	glBindBuffer(GL_ARRAY_BUFFER, pvbo);
-	glBufferData(GL_ARRAY_BUFFER, 18 * sizeof(float), points, GL_STATIC_DRAW);
-
-	//color
-	GLuint cvbo = 0;
-	glGenBuffers(1, &cvbo);
-	glBindBuffer(GL_ARRAY_BUFFER, cvbo);
-	glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(glm::vec3), colors, GL_STATIC_DRAW);
-
-	// texture
-	GLuint tvbo = 0;
-	glGenBuffers(1, &tvbo);
-	glBindBuffer(GL_ARRAY_BUFFER, tvbo);
-	glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(glm::vec2), texcoords, GL_STATIC_DRAW);
+	// Create Vertex Buffer
 
 	GLuint vbo = 0;
 	glGenBuffers(1, &vbo);
@@ -152,18 +134,16 @@ int main(int argc, char** argv)
 	GLuint vao = 0;
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 
 	glEnableVertexAttribArray(0);
-	glBindBuffer(GL_ARRAY_BUFFER, pvbo);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 
 	glEnableVertexAttribArray(1);
-	glBindBuffer(GL_ARRAY_BUFFER, cvbo);
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, NULL);
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
 
 	glEnableVertexAttribArray(2);
-	glBindBuffer(GL_ARRAY_BUFFER, tvbo);
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, NULL);
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
 
 	// create program
 	std::shared_ptr<neu::Program> program = neu::g_resources.Get<neu::Program>("Shaders/basic.prog", GL_PROGRAM);
@@ -188,11 +168,11 @@ int main(int argc, char** argv)
 
 		if (neu::g_inputSystem.GetKeyState(neu::key_escape) == neu::InputSystem::KeyState::Pressed) quit = true;
 		glUniform1f(material->GetProgram()->m_uniforms["scale"], std::sin(neu::g_time.time * 2.5f));
-		mx = glm::eulerAngleXYZ(0.0f, 0.0f, neu::g_time.time);
+		mx = glm::eulerAngleXYZ(0.0f, neu::g_time.time, neu::g_time.time);
 		glUniformMatrix4fv(material->GetProgram()->m_uniforms["transform"], 1, GL_FALSE, glm::value_ptr(mx));
 
 		neu::g_renderer.BeginFrame();
-		glDrawArrays(GL_TRIANGLES, 0, 6);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
 
  		neu::g_renderer.EndFrame();
 	}

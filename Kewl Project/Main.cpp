@@ -160,7 +160,8 @@ int main(int argc, char** argv)
 	glm::mat4 model{ 1 };
 	glm::mat4 projection = glm::perspective(45.0f, (float)neu::g_renderer.GetWidth() / (float)neu::g_renderer.GetHeight(), 1.0f, 100.0f);
 
-	glm::vec3 cameraPosition = glm::vec3{ 0, 2, 2 };
+	glm::vec3 cameraPosition = glm::vec3{ 0, 0, 2 };
+	float speed = 3;
 
 	bool quit = false;
 	while (!quit)
@@ -170,13 +171,15 @@ int main(int argc, char** argv)
 		if (neu::g_inputSystem.GetKeyState(neu::key_escape) == neu::InputSystem::KeyState::Pressed) quit = true;
 
 		// Add Input To Move Camera
-		if (neu::g_inputSystem.GetKeyState(neu::key_left) == neu::InputSystem::KeyState::Held) cameraPosition += glm::vec3{ 0.25, 0, 0 };
-		if (neu::g_inputSystem.GetKeyState(neu::key_right) == neu::InputSystem::KeyState::Held) cameraPosition += glm::vec3{ -0.25, 0, 0 };
-		if (neu::g_inputSystem.GetKeyState(neu::key_up) == neu::InputSystem::KeyState::Held) cameraPosition += glm::vec3{ 0, 0.5, 0 };
-		if (neu::g_inputSystem.GetKeyState(neu::key_down) == neu::InputSystem::KeyState::Held) cameraPosition += glm::vec3{ 0, -0.5, 0 };
+		if (neu::g_inputSystem.GetKeyState(neu::key_a) == neu::InputSystem::KeyState::Held) cameraPosition.x -= speed * neu::g_time.deltaTime;
+		if (neu::g_inputSystem.GetKeyState(neu::key_d) == neu::InputSystem::KeyState::Held) cameraPosition.x += speed * neu::g_time.deltaTime;
+		if (neu::g_inputSystem.GetKeyState(neu::key_w) == neu::InputSystem::KeyState::Held) cameraPosition.y += speed * neu::g_time.deltaTime;
+		if (neu::g_inputSystem.GetKeyState(neu::key_s) == neu::InputSystem::KeyState::Held) cameraPosition.y -= speed * neu::g_time.deltaTime;
+		if (neu::g_inputSystem.GetKeyState(neu::key_LShift) == neu::InputSystem::KeyState::Held) cameraPosition.z -= speed * neu::g_time.deltaTime;
+		if (neu::g_inputSystem.GetKeyState(neu::key_LCtrl) == neu::InputSystem::KeyState::Held) cameraPosition.z += speed * neu::g_time.deltaTime;
 
 
-		glm::mat4 view = glm::lookAt(cameraPosition, glm::vec3{ 0 , 0, 0 }, glm::vec3{ 0, 1, 0 });
+		glm::mat4 view = glm::lookAt(cameraPosition,cameraPosition + glm::vec3{ 0 , 0, -1 }, glm::vec3{ 0, 1, 0 });
 		// material->GetProgram()->SetUniform("scale", std::sin(neu::g_time.time));
 		model = glm::eulerAngleXYZ(0.0f, neu::g_time.time, 0.0f);
 		//material->GetProgram()->SetUniform("transform", model);

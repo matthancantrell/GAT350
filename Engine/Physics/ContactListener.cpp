@@ -1,6 +1,6 @@
 #include "ContactListener.h"
-#include "Framework/Actor.h"
-#include "Components/CollisionComponent.h"
+#include "../Framework/Actor.h"
+#include "../Components/CollisionComponent.h"
 #include <iostream>
 
 namespace neu

@@ -1,5 +1,5 @@
 #include "Font.h"
-#include "Core/Logger.h"
+#include "../Core/Logger.h"
 #include <SDL_ttf.h>
 
 namespace neu

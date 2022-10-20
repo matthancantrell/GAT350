@@ -1,6 +1,6 @@
 #pragma once
 #include "RenderComponent.h"
-#include "Math/Rect.h"
+#include "../Math/Rect.h"
 
 namespace neu
 {

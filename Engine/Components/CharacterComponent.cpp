@@ -1,5 +1,5 @@
 #include "CharacterComponent.h"
-#include "Engine.h"
+#include "../Engine.h"
 
 namespace neu
 {

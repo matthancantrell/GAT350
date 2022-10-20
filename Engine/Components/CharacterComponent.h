@@ -1,7 +1,7 @@
 #pragma once
-#include "Framework/Component.h"
-#include "Physics/Collision.h"
-#include "Framework/Event.h"
+#include "../Framework/Component.h"
+#include "../Physics/Collision.h"
+#include "../Framework/Event.h"
 
 namespace neu
 {

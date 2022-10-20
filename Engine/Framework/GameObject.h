@@ -1,5 +1,5 @@
 #pragma once
-#include "Serialization/Serializable.h"
+#include "../Serialization/Serializable.h"
 
 #define CLASS_DECLARATION(class) \
 	std::unique_ptr<GameObject> Clone() override { return std::make_unique<class>(*this); }

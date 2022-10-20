@@ -1,6 +1,6 @@
 #pragma once
-#include "Framework/Component.h"
-#include "Math/Matrix3x3.h"
+#include "../Framework/Component.h"
+#include "../Math/Matrix3x3.h"
 
 namespace neu
 {

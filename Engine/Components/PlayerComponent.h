@@ -1,6 +1,6 @@
 #pragma once
-#include "Framework/Component.h"
-#include "Physics/Collision.h"
+#include "../Framework/Component.h"
+#include "../Physics/Collision.h"
 #include "CharacterComponent.h"
 
 namespace neu

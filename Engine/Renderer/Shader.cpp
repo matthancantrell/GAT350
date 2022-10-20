@@ -1,6 +1,6 @@
 #include "Shader.h"
-#include "Core/File.h"
-#include "Core/Logger.h"
+#include "../Core/File.h"
+#include "../Core/Logger.h"
 
 namespace neu
 {

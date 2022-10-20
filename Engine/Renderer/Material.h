@@ -1,6 +1,6 @@
 #pragma once 
-#include "Resource/Resource.h" 
-#include "Math/MathUtils.h" 
+#include "../Resource/Resource.h" 
+#include "../Math/MathUtils.h" 
 #include <vector> 
 #include <memory> 
 

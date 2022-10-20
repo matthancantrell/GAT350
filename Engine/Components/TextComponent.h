@@ -1,7 +1,7 @@
 #pragma once
 #include "RenderComponent.h"
-#include "Math/Color.h"
-#include "Math/Vector2.h"
+#include "../Math/Color.h"
+#include "../Math/Vector2.h"
 #include <memory>
 
 namespace neu

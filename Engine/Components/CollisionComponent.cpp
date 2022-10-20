@@ -1,5 +1,5 @@
 #include "CollisionComponent.h"
-#include "Engine.h"
+#include "../Engine.h"
 #include <iostream>
 
 namespace neu

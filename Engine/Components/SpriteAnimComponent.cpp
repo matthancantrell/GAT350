@@ -1,7 +1,7 @@
 #include "SpriteAnimComponent.h"
-#include "Renderer/Renderer.h"
-#include "Framework/Actor.h"
-#include "Engine.h"
+#include "../Renderer/Renderer.h"
+#include "../Framework/Actor.h"
+#include "../Engine.h"
 
 namespace neu
 {

@@ -1,9 +1,9 @@
 #pragma once
 #include <glad/glad.h>
 #include <SDL.h>
-#include "Math/Vector2.h"
-#include "Math/Color.h"
-#include "Math/Matrix3x3.h"
+#include "../Math/Vector2.h"
+#include "../Math/Color.h"
+#include "../Math/Matrix3x3.h"
 
 struct SDL_Renderer;
 struct SDL_Window;

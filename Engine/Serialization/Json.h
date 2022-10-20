@@ -1,6 +1,6 @@
 #pragma once
-#include "../ThirdParty/rapidjson/include/rapidjson/document.h"
-#include "Math/MathUtils.h"
+#include "rapidjson/document.h"
+#include "../Math/MathUtils.h"
 #include <string>
 #include <vector>
 

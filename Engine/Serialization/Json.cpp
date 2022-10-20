@@ -1,9 +1,9 @@
 #include "Json.h"
 #include "rapidjson/istreamwrapper.h"
-#include "Core/Logger.h"
-#include "Math/Vector2.h"
-#include "Math/Color.h"
-#include "Math/Rect.h"
+#include "../Core/Logger.h"
+#include "../Math/Vector2.h"
+#include "../Math/Color.h"
+#include "../Math/Rect.h"
 #include <fstream>
 
 namespace neu::json

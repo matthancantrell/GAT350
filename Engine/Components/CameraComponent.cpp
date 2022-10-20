@@ -1,6 +1,6 @@
 #include "CameraComponent.h"
-#include "Framework/Actor.h"
-#include "Engine.h"
+#include "../Framework/Actor.h"
+#include "../Engine.h"
 
 namespace neu
 {

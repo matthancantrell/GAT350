@@ -37,7 +37,9 @@ namespace neu
 			matrix = parent * (glm::mat4)*this;
 		}
 
-
+		glm::vec3 getRight() { return ((glm::mat4)(*this))[0]; }
+		glm::vec3 getUp() { return ((glm::mat4)(*this))[1]; }
+		glm::vec3 getForward() { return ((glm::mat4)(*this))[2]; }
 
 		operator glm::mat4 () const
 		{

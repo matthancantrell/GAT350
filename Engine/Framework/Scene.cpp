@@ -1,5 +1,6 @@
 #include "Scene.h"
 #include "Factory.h"
+#include "Engine.h"
 #include <algorithm>
 #include <iostream>
 
@@ -29,6 +30,14 @@ namespace neu
 
 	void Scene::Draw(Renderer& renderer)
 	{
+		// get camera / set renderer view/projection
+		auto camera = GetActorFromName("Camera");
+		if (camera)
+		{
+			g_renderer.SetView(camera->GetComponent<CameraComponent>() -> GetView());
+			g_renderer.SetProjection(camera->GetComponent<CameraComponent>() -> GetProjection());
+		}
+		// draw actors
 		for (auto& actor : m_actors)
 		{
 			actor->Draw(renderer);
@@ -46,6 +55,26 @@ namespace neu
 		for (auto& actor : m_actors) { actor->SetDestroy(); }
 
 		m_actors.clear();
+	}
+
+	bool Scene::Create(std::string name, ...)
+	{
+
+		auto scene = std::make_unique<neu::Scene>();
+		rapidjson::Document document;
+		bool success = neu::json::Load(name, document);
+		if (!success)
+		{
+			LOG("error loading scene file %s.", name.c_str());
+		}
+		else
+		{
+			scene->Read(document);
+			scene->Initialize();
+			return true;
+		}
+
+		return false;
 	}
 
 	bool Scene::Write(const rapidjson::Value& value) const

@@ -69,8 +69,8 @@ namespace neu
 		}
 		else
 		{
-			scene->Read(document);
-			scene->Initialize();
+			Read(document);
+			Initialize();
 			return true;
 		}
 

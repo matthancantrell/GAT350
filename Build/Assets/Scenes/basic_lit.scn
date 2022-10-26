@@ -30,12 +30,39 @@
     },
     {
       "type": "Actor",
+      "name": "Light",
+      "transform": {
+        "position": [
+          2,
+          5,
+          0
+
+        ]
+      },
+      "components": [
+        {
+          "type": "LightComponent",
+          "color": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Actor",
       "name": "Camera",
       "transform": {
         "position": [
           0,
           0,
-          -5
+          4
+        ],
+        "rotation": [
+          0,
+          180,
+          0
         ]
       },
       "components": [

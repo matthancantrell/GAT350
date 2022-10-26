@@ -24,7 +24,7 @@
         {
           "type": "ModelComponent",
           "model_name": "Models/spot.obj",
-          "material_name": "Materials/fallguy.mtrl"
+          "material_name": "Materials/spot.mtrl"
         }
       ]
     },

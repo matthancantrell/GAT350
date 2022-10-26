@@ -59,8 +59,6 @@ namespace neu
 
 	bool Scene::Create(std::string name, ...)
 	{
-
-		auto scene = std::make_unique<neu::Scene>();
 		rapidjson::Document document;
 		bool success = neu::json::Load(name, document);
 		if (!success)

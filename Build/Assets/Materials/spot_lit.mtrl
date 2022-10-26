@@ -1,5 +1,5 @@
 {
-  "program": "Shaders/basic.prog",
+  "program": "Shaders/basic_lit.prog",
   "texture": "Textures/spot.png",
   "color": [
     1,

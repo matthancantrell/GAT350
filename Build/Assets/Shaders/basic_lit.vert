@@ -13,8 +13,14 @@ struct Light
 	vec4 position;
 };
  
+ struct Material
+ {
+	vec3 color;
+	float shininess;
+ };
 
 uniform Light light;
+uniform Material material;
 uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;

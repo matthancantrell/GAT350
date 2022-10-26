@@ -108,7 +108,7 @@ int main(int argc, char** argv)
 	LOG("Window Initialized...");
 
 	// load scene
-	auto scene = neu::g_resources.Get<neu::Scene>("Scenes/basic.scn");
+	auto scene = neu::g_resources.Get<neu::Scene>("Scenes/basic_lit.scn");
 
 	bool quit = false;
 	while (!quit)

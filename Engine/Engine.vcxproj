@@ -282,7 +282,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Build\Assets\Materials\box.mtrl" />
-    <None Include="..\Build\Assets\Materials\fallguy.mtrl" />
+    <None Include="..\Build\Assets\Materials\spot.mtrl" />
+    <None Include="..\Build\Assets\Materials\spot_lit.mtrl" />
     <None Include="..\Build\Assets\Scenes\basic.scn" />
     <None Include="..\Build\Assets\Scenes\basic_lit.scn" />
     <None Include="..\Build\Assets\Shaders\basic.frag" />

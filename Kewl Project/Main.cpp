@@ -2,27 +2,27 @@
 #include <iostream> 
 
 float points[] = {
-  /*-0.5f, -0.5f,  0.0f,
-   0.5f,  0.5f,  0.0f,
-   0.5f, -0.5f,  0.0f,
-   1.5f,  0.5f,  0.0f,
-   1.5f,  0.5f,  0.0f,
-   1.5f, -0.5f,  0.0f*/
+	/*-0.5f, -0.5f,  0.0f,
+	 0.5f,  0.5f,  0.0f,
+	 0.5f, -0.5f,  0.0f,
+	 1.5f,  0.5f,  0.0f,
+	 1.5f,  0.5f,  0.0f,
+	 1.5f, -0.5f,  0.0f*/
 
- /* -0.5f, -0.5f,  0.0f,
-  -0.5f,  0.5f,  0.0f,
-   0.5f,  0.5f,  0.0f,
-   0.5f, -0.5f,  0.0f,
-  -0.5f, -0.5f,  0.0f,
-   0.5f,  0.5f,  0.0f*/
+	 /* -0.5f, -0.5f,  0.0f,
+	  -0.5f,  0.5f,  0.0f,
+	   0.5f,  0.5f,  0.0f,
+	   0.5f, -0.5f,  0.0f,
+	  -0.5f, -0.5f,  0.0f,
+	   0.5f,  0.5f,  0.0f*/
 
-	-1.0f, -1.0f, 0.0f,
-	-1.0f,  1.0f, 0.0f,
-	 1.0f, -1.0f, 0.0f,
+		-1.0f, -1.0f, 0.0f,
+		-1.0f,  1.0f, 0.0f,
+		 1.0f, -1.0f, 0.0f,
 
-	 -1.0f, 1.0f, 0.0f,
-	  1.0f, 1.0f, 0.0f,
-	  1.0f,-1.0f, 0.0f
+		 -1.0f, 1.0f, 0.0f,
+		  1.0f, 1.0f, 0.0f,
+		  1.0f,-1.0f, 0.0f
 
 };
 
@@ -126,36 +126,9 @@ int main(int argc, char** argv)
 	// Create A Model
 	auto m = neu::g_resources.Get<neu::Model>("Models/spot.obj");
 
-	// Create Material
-	std::shared_ptr<neu::Material> material = neu::g_resources.Get<neu::Material>("Materials/fallguy.mtrl");
-	material->Bind();
 
-	material->GetProgram()->SetUniform("scale", 0.5f);
-	material->GetProgram()->SetUniform("tint", glm::vec3{ 1, 0, 0 });
-
-	glm::mat4 model{ 1 };
-	glm::mat4 projection = glm::perspective(45.0f, (float)neu::g_renderer.GetWidth() / (float)neu::g_renderer.GetHeight(), 1.0f, 100.0f);
-
-	glm::vec3 cameraPosition = glm::vec3{ 0, 0, 2 };
-	float speed = 3;
-
-	std::vector<neu::Transform> t;
-
-	for (size_t i = 0; i < 1000; i++)
-	{
-		t.push_back({ {neu::randomf(-10, 10), neu::randomf(-10, 10), neu::randomf(-10, 10)}, {neu::randomf(360), 90, 0} });
-	}
-
-
-	neu::Transform transforms[] =
-	{
-		{ {0, 0, 0}, {0, 90, 90} },
-		{ {2, 0, 0}, {90, 90, 90} },
-		{ {0, 2, 0}, {0, 90, 0} },
-		{ {2, 2, 0}, {20, 90, 0} },
-		{ {1, 0, 1}, {0, 90, 0} },
-		{ {0, 1, 0}, {90, 90, 0} },
-	};
+	// load scene
+	auto scene = neu::g_resources.Get<neu::Scene>("Scenes/basic.scn");
 
 	bool quit = false;
 	while (!quit)
@@ -164,7 +137,14 @@ int main(int argc, char** argv)
 
 		if (neu::g_inputSystem.GetKeyState(neu::key_escape) == neu::InputSystem::KeyState::Pressed) quit = true;
 
-		scene->Update();
+		// Add Input To Move Camera
+		if (neu::g_inputSystem.GetKeyState(neu::key_a) == neu::InputSystem::KeyState::Held) cameraPosition.x -= speed * neu::g_time.deltaTime;
+		if (neu::g_inputSystem.GetKeyState(neu::key_d) == neu::InputSystem::KeyState::Held) cameraPosition.x += speed * neu::g_time.deltaTime;
+		if (neu::g_inputSystem.GetKeyState(neu::key_w) == neu::InputSystem::KeyState::Held) cameraPosition.y += speed * neu::g_time.deltaTime;
+		if (neu::g_inputSystem.GetKeyState(neu::key_s) == neu::InputSystem::KeyState::Held) cameraPosition.y -= speed * neu::g_time.deltaTime;
+		if (neu::g_inputSystem.GetKeyState(neu::key_LShift) == neu::InputSystem::KeyState::Held) cameraPosition.z -= speed * neu::g_time.deltaTime;
+		if (neu::g_inputSystem.GetKeyState(neu::key_LCtrl) == neu::InputSystem::KeyState::Held) cameraPosition.z += speed * neu::g_time.deltaTime;
+
 
 		glm::mat4 view = glm::lookAt(cameraPosition,cameraPosition + glm::vec3{ 0 , 0, -1 }, glm::vec3{ 0, 1, 0 });
 		model = glm::eulerAngleXYZ(0.0f, neu::g_time.time, 0.0f);
@@ -173,8 +153,17 @@ int main(int argc, char** argv)
 
 		neu::g_renderer.BeginFrame();
 
-		scene->Draw(neu::g_renderer);
+		for (size_t i = 0; i < t.size(); i++)
+		{
+			t[i].rotation += glm::vec3{ 0, 90 * neu::g_time.deltaTime, 0 };
+			glm::mat4 mvp = projection * view * (glm::mat4)t[i];
+			//material->GetProgram()->SetUniform("mvp", mvp);
+			// vb->Draw();
+		}
+
 		m->m_vertexBuffer.Draw();
+
+		//vb->Draw();
 
  		neu::g_renderer.EndFrame();
 	}

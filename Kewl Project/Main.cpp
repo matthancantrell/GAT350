@@ -115,6 +115,12 @@ int main(int argc, char** argv)
 	{
 		neu::Engine::Instance().Update();
 
+		auto actor = scene->GetActorFromName("Spot");
+		if (actor)
+		{
+			actor->m_transform.rotation.y += 90.0f * neu::g_time.deltaTime;
+		}
+
 		scene->Update();
 
 		if (neu::g_inputSystem.GetKeyState(neu::key_escape) == neu::InputSystem::KeyState::Pressed) quit = true;

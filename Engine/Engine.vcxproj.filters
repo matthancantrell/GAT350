@@ -393,5 +393,14 @@
     <None Include="..\Build\Assets\Materials\spot_lit.mtrl">
       <Filter>Resources\Materials</Filter>
     </None>
+    <None Include="..\Build\Assets\Shaders\basic_phong.prog">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="..\Build\Assets\Shaders\basic_phong.frag">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="..\Build\Assets\Shaders\basic_phong.vert">
+      <Filter>Resources\Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

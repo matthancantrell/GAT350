@@ -108,7 +108,7 @@ int main(int argc, char** argv)
 	LOG("Window Initialized...");
 
 	// load scene
-	auto scene = neu::g_resources.Get<neu::Scene>("Scenes/basic_lit.scn");
+	auto scene = neu::g_resources.Get<neu::Scene>("Scenes/texture.scn");
 
 	bool quit = false;
 	while (!quit)
@@ -118,8 +118,9 @@ int main(int argc, char** argv)
 		auto actor = scene->GetActorFromName("Spot");
 		if (actor)
 		{
-			actor->m_transform.rotation.y += 90.0f * neu::g_time.deltaTime;
+			actor->m_transform.rotation.y += neu::g_time.deltaTime * 90.0f;
 		}
+		
 
 		scene->Update();
 

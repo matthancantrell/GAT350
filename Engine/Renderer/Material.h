@@ -20,6 +20,8 @@ namespace neu
 
 	public:
 		glm::vec3 color;
+		glm::vec2 uv_tiling{ 1, 1 };
+		glm::vec2 uv_offset{ 1, 1 };
 		float shininess = 0;
 
 	private:

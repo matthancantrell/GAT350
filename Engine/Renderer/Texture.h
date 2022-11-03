@@ -27,6 +27,8 @@ namespace neu
 
 		void Bind() { glBindTexture(m_target, m_texture); }
 
+		void SetActive(GLuint unit) { glActiveTexture(unit); }
+
 		Vector2 GetSize() const;
 
 		friend class Renderer;
@@ -37,6 +39,5 @@ namespace neu
 	private:
 		GLuint m_texture = 0;
 		GLenum m_target = GL_TEXTURE_2D;
-		GLuint m_unit = GL_TEXTURE0;
 	};
 }

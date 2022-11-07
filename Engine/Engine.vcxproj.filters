@@ -60,6 +60,12 @@
     <Filter Include="Resources\Shaders\Texture">
       <UniqueIdentifier>{e526f747-d0b7-473d-afd0-61a131515cf3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resources\Shaders\Normal">
+      <UniqueIdentifier>{6c6bd681-78ea-4b24-8ea3-cf263a265907}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Shaders\Emissive">
+      <UniqueIdentifier>{7946eb73-59aa-473b-8768-4fc9de5cf6a7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Math\MathUtils.cpp">
@@ -434,6 +440,30 @@
     </None>
     <None Include="..\Build\Assets\Shaders\texture_phong.vert">
       <Filter>Resources\Shaders\Texture</Filter>
+    </None>
+    <None Include="..\Build\Assets\Shaders\normal_phong.frag">
+      <Filter>Resources\Shaders\Normal</Filter>
+    </None>
+    <None Include="..\Build\Assets\Shaders\normal_phong.prog">
+      <Filter>Resources\Shaders\Normal</Filter>
+    </None>
+    <None Include="..\Build\Assets\Shaders\normal_phong.vert">
+      <Filter>Resources\Shaders\Normal</Filter>
+    </None>
+    <None Include="..\Build\Assets\Shaders\emissive_phong.frag">
+      <Filter>Resources\Shaders\Emissive</Filter>
+    </None>
+    <None Include="..\Build\Assets\Shaders\emissive_phong.prog">
+      <Filter>Resources\Shaders\Emissive</Filter>
+    </None>
+    <None Include="..\Build\Assets\Shaders\emissive_phong.vert">
+      <Filter>Resources\Shaders\Emissive</Filter>
+    </None>
+    <None Include="..\Build\Assets\Scenes\emissive.scn">
+      <Filter>Resources\Scenes</Filter>
+    </None>
+    <None Include="..\Build\Assets\Materials\emissive.mtrl">
+      <Filter>Resources\Materials</Filter>
     </None>
   </ItemGroup>
 </Project>

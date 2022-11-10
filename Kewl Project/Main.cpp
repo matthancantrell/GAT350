@@ -17,21 +17,31 @@ int main(int argc, char** argv)
 
 	neu::g_renderer.CreateWindow("Neumont", 800, 600);
 	LOG("Window Initialized...");
+	neu::g_gui.Initialize(neu::g_renderer);
 
 	// load scene
-	auto scene = neu::g_resources.Get<neu::Scene>("Scenes/emissive.scn");
+	auto scene = neu::g_resources.Get<neu::Scene>("Scenes/texture.scn");
+
+	float x = 0;
+	glm::vec3 pos = { 0,0,0 };
 
 	bool quit = false;
 	while (!quit)
 	{
 		neu::Engine::Instance().Update();
 
-		auto actor = scene->GetActorFromName("Spot");
+		neu::g_gui.BeginFrame(neu::g_renderer);
+
+		auto actor = scene->GetActorFromName("Light");
 		if (actor)
 		{
-			actor->m_transform.rotation.y += neu::g_time.deltaTime * 90.0f;
+			actor->m_transform.position = pos;
 		}
 		
+		ImGui::Begin("Howdy :D");
+		ImGui::Button("Press Me!");
+		ImGui::SliderFloat3("pos", &pos[0], -10.0f, 10.0f);
+		ImGui::End();
 
 		scene->Update();
 
@@ -40,10 +50,14 @@ int main(int argc, char** argv)
 		neu::g_renderer.BeginFrame();
 
 		scene->Draw(neu::g_renderer);
+		neu::g_gui.Draw();
 
  		neu::g_renderer.EndFrame();
+		neu::g_gui.EndFrame();
 	}
 	scene->RemoveAll();
+	LOG("Emptying Scene...");
 	neu::Engine::Instance().Shutdown();
+	LOG("Successfully Shut Down...");
 	return 0;
 }

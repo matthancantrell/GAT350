@@ -66,6 +66,15 @@
     <Filter Include="Resources\Shaders\Emissive">
       <UniqueIdentifier>{7946eb73-59aa-473b-8768-4fc9de5cf6a7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resources\Shaders\Unlit">
+      <UniqueIdentifier>{7f31a255-25d8-4bc5-914f-77a68d17c8b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\externals">
+      <UniqueIdentifier>{586dcb91-b19e-4eed-9e61-be0c5ff71e3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\externals\imgui">
+      <UniqueIdentifier>{6fb61355-af5b-44c1-bd62-59662f2daae0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Math\MathUtils.cpp">
@@ -202,6 +211,30 @@
     </ClCompile>
     <ClCompile Include="Core\Utilities.cpp">
       <Filter>Source\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ThirdParty\imgui\imgui_demo.cpp">
+      <Filter>Source\externals\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ThirdParty\imgui\imgui_draw.cpp">
+      <Filter>Source\externals\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ThirdParty\imgui\imgui_impl_opengl3.cpp">
+      <Filter>Source\externals\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ThirdParty\imgui\imgui_impl_sdl.cpp">
+      <Filter>Source\externals\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ThirdParty\imgui\imgui_tables.cpp">
+      <Filter>Source\externals\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ThirdParty\imgui\imgui_widgets.cpp">
+      <Filter>Source\externals\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ThirdParty\imgui\imgui.cpp">
+      <Filter>Source\externals\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer\GUI.cpp">
+      <Filter>Source\Renderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -382,6 +415,36 @@
     <ClInclude Include="Core\Utilities.h">
       <Filter>Source\Core</Filter>
     </ClInclude>
+    <ClInclude Include="..\ThirdParty\imgui\imgui.h">
+      <Filter>Source\externals\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ThirdParty\imgui\imgui_impl_opengl3.h">
+      <Filter>Source\externals\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ThirdParty\imgui\imgui_impl_opengl3_loader.h">
+      <Filter>Source\externals\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ThirdParty\imgui\imgui_impl_sdl.h">
+      <Filter>Source\externals\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ThirdParty\imgui\imgui_internal.h">
+      <Filter>Source\externals\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ThirdParty\imgui\imstb_rectpack.h">
+      <Filter>Source\externals\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ThirdParty\imgui\imstb_textedit.h">
+      <Filter>Source\externals\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ThirdParty\imgui\imstb_truetype.h">
+      <Filter>Source\externals\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ThirdParty\imgui\imconfig.h">
+      <Filter>Source\externals\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\GUI.h">
+      <Filter>Source\Renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Build\Assets\Materials\box.mtrl">
@@ -464,6 +527,27 @@
     </None>
     <None Include="..\Build\Assets\Materials\emissive.mtrl">
       <Filter>Resources\Materials</Filter>
+    </None>
+    <None Include="..\Build\Assets\Scenes\test.scn">
+      <Filter>Resources\Scenes</Filter>
+    </None>
+    <None Include="..\Build\Assets\Shaders\Unlit\color.frag">
+      <Filter>Resources\Shaders\Unlit</Filter>
+    </None>
+    <None Include="..\Build\Assets\Shaders\Unlit\color.prog">
+      <Filter>Resources\Shaders\Unlit</Filter>
+    </None>
+    <None Include="..\Build\Assets\Shaders\Unlit\color.vert">
+      <Filter>Resources\Shaders\Unlit</Filter>
+    </None>
+    <None Include="..\Build\Assets\Shaders\Unlit\texture.frag">
+      <Filter>Resources\Shaders\Unlit</Filter>
+    </None>
+    <None Include="..\Build\Assets\Shaders\Unlit\texture.prog">
+      <Filter>Resources\Shaders\Unlit</Filter>
+    </None>
+    <None Include="..\Build\Assets\Shaders\Unlit\texture.vert">
+      <Filter>Resources\Shaders\Unlit</Filter>
     </None>
   </ItemGroup>
 </Project>

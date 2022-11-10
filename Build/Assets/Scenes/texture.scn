@@ -2,7 +2,7 @@
   "actors": [
     {
       "type": "Actor",
-      "name": "Spot2",
+      "name": "Cube",
       "transform": {
         "position": [
           0,
@@ -23,64 +23,8 @@
       "components": [
         {
           "type": "ModelComponent",
-          "model_name": "Models/cube.obj",
-          "material_name": "Materials/multi.mtrl"
-        }
-      ]
-    },
-    {
-      "type": "Actor",
-      "name": "Spot",
-      "transform": {
-        "position": [
-          0,
-          0,
-          10
-        ],
-        "scale": [
-          1,
-          1,
-          1
-        ],
-        "rotation": [
-          0,
-          180,
-          0
-        ]
-      },
-      "components": [
-        {
-          "type": "ModelComponent",
-          "model_name": "Models/cube.obj",
-          "material_name": "Materials/spot_lit.mtrl"
-        }
-      ]
-    },
-    {
-      "type": "Actor",
-      "name": "Spot1",
-      "transform": {
-        "position": [
-          10,
-          0,
-          0
-        ],
-        "scale": [
-          1,
-          1,
-          1
-        ],
-        "rotation": [
-          0,
-          180,
-          0
-        ]
-      },
-      "components": [
-        {
-          "type": "ModelComponent",
-          "model_name": "Models/FallGuy_Final.obj",
-          "material_name": "Materials/spot_lit.mtrl"
+          "model_name": "Models/ogre.obj",
+          "material_name": "Materials/emissive.mtrl"
         }
       ]
     },
@@ -90,9 +34,13 @@
       "transform": {
         "position": [
           0,
-          5,
+          3,
+          1
+        ],
+        "rotation": [
+          85,
+          0,
           0
-
         ]
       },
       "components": [
@@ -102,7 +50,10 @@
             1.0,
             1.0,
             1.0
-          ]
+          ],
+          "type_name": "spot",
+          "cutoff": 25.0,
+          "exponent": 30.0
         }
       ]
     },
@@ -117,7 +68,7 @@
         ],
         "rotation": [
           0,
-          0,
+          180,
           0
         ]
       },

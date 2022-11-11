@@ -84,5 +84,5 @@ void main()
 	//vec4 texture_color = mix(texture(texture1, ttexcoord), texture(texture2, ttexcoord), 0.5);
 	vec4 texture_color = texture(diffuseMap, ttexcoord);
 
-	fcolor = vec4(ambient + diffuse, 1);// * texture_color + vec4(specular, 1);
+	fcolor = vec4(ambient + diffuse, 1) * texture_color + vec4(specular, 1);
 }

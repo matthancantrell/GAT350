@@ -11,8 +11,8 @@ namespace neu
 		material->Bind();
 		// set model view projection matrix for model
 		material->GetProgram() -> SetUniform("model", (glm::mat4)m_owner->m_transform);
-		material->GetProgram() -> SetUniform("view", renderer.GetView());
-		material->GetProgram() -> SetUniform("projection", renderer.GetProjection());
+		//material->GetProgram() -> SetUniform("view", renderer.GetView());
+		//material->GetProgram() -> SetUniform("projection", renderer.GetProjection());
 
 		glDepthMask(depth_test);
 

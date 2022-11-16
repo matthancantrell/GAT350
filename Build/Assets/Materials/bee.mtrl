@@ -1,5 +1,5 @@
 {
-  "program": "Shaders/texture_phong.prog",
+  "program": "Shaders/normal_phong.prog",
   "textures": [
     "textures/texture.png",
     "textures/texture_2.png"

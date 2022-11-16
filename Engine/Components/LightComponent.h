@@ -3,9 +3,11 @@
 
 namespace neu
 {
+
+	class Program;
+
 	class LightComponent : public Component
 	{
-	public:
 
 	public:
 		enum class Type
@@ -15,12 +17,15 @@ namespace neu
 			Spot // 02
 		};
 
+	public:
 		CLASS_DECLARATION(LightComponent)
 
 		void Update() override;
 
 		virtual bool Write(const rapidjson::Value& value) const override;
 		virtual bool Read(const rapidjson::Value& value) override;
+
+		void SetProgram(std::shared_ptr<Program> program, int index);
 
 	public:
 		Type type = Type::Point;

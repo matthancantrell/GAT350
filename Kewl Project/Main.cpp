@@ -24,6 +24,7 @@ int main(int argc, char** argv)
 
 	float x = 0;
 	glm::vec3 pos = { 0,0,0 };
+	glm::vec3 rot{ 0,0,0 };
 
 	bool quit = false;
 	while (!quit)
@@ -32,15 +33,14 @@ int main(int argc, char** argv)
 
 		neu::g_gui.BeginFrame(neu::g_renderer);
 
-		auto actor = scene->GetActorFromName("Light");
+		auto actor = scene->GetActorFromName("Dog");
 		if (actor)
 		{
-			actor->m_transform.position = pos;
+			//actor->m_transform.rotation = math::EulerToQuaternion(rot);
 		}
 		
-		ImGui::Begin("Howdy :D");
-		ImGui::Button("Press Me!");
-		ImGui::SliderFloat3("pos", &pos[0], -10.0f, 10.0f);
+		ImGui::Begin("Rotation");
+		ImGui::SliderFloat3("pos", &rot[0], -360.0f, 360.0f);
 		ImGui::End();
 
 		scene->Update();

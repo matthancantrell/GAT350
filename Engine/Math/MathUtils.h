@@ -19,6 +19,9 @@ namespace math
 	constexpr float TwoPi = 6.28318530718f; // 360
 	constexpr float HalfPi = 1.57079632679f; // 90
 
+	glm::vec3 QuaternionToEuler(glm::quat q);
+	glm::quat EulerToQuaternion(glm::vec3 euler);
+
 	constexpr float DegToRad(float degrees)
 	{
 		return degrees * (Pi / 180);

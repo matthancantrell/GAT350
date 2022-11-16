@@ -6,7 +6,8 @@ namespace neu
 	{
 	public:
 		CLASS_DECLARATION(CameraController)
-		
+
+		void Initialize() override;
 		void Update() override;
 
 		virtual bool Write(const rapidjson::Value& value) const override;
@@ -14,5 +15,9 @@ namespace neu
 
 	private:
 		float speed = 0;
+		float sensitivity = 0.1;
+
+		float m_yaw = 0;
+		float m_pitch = 0;
 	};
 }

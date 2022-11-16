@@ -47,6 +47,7 @@
 #include "Renderer/Program.h"
 #include "Renderer/Material.h"
 #include "Renderer/VertexBuffer.h"
+#include "Renderer/Cubemap.h"
 
 
 #include <memory>

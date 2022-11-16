@@ -2,7 +2,19 @@
   "actors": [
     {
       "type": "Actor",
-      "name": "Spot2",
+      "name": "Skybox",
+      "components": [
+        {
+          "type": "ModelComponent",
+          "model_name": "Models/cube.obj",
+          "material_name": "Materials/skybox.mtrl",
+          "depth_test":  false
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Cube",
       "transform": {
         "position": [
           0,
@@ -23,8 +35,8 @@
       "components": [
         {
           "type": "ModelComponent",
-          "model_name": "Models/cube.obj",
-          "material_name": "Materials/multi.mtrl"
+          "model_name": "Models/dachshund.1.glb",
+          "material_name": "Materials/bee.mtrl"
         }
       ]
     },
@@ -34,9 +46,13 @@
       "transform": {
         "position": [
           0,
-          5,
+          3,
+          1
+        ],
+        "rotation": [
+          75,
+          0,
           0
-
         ]
       },
       "components": [
@@ -46,7 +62,10 @@
             1.0,
             1.0,
             1.0
-          ]
+          ],
+          "type_name": "point",
+          "cutoff": 25.0,
+          "exponent": 10.0
         }
       ]
     },
@@ -61,7 +80,7 @@
         ],
         "rotation": [
           0,
-          0,
+          180,
           0
         ]
       },

@@ -216,6 +216,7 @@
     <ClCompile Include="Math\Vector2.cpp" />
     <ClCompile Include="Physics\ContactListener.cpp" />
     <ClCompile Include="Physics\PhysicsSystem.cpp" />
+    <ClCompile Include="Renderer\Cubemap.cpp" />
     <ClCompile Include="Renderer\Font.cpp" />
     <ClCompile Include="Renderer\GUI.cpp" />
     <ClCompile Include="Renderer\Material.cpp" />
@@ -285,6 +286,7 @@
     <ClInclude Include="Physics\Collision.h" />
     <ClInclude Include="Physics\ContactListener.h" />
     <ClInclude Include="Physics\PhysicsSystem.h" />
+    <ClInclude Include="Renderer\Cubemap.h" />
     <ClInclude Include="Renderer\Font.h" />
     <ClInclude Include="Renderer\GUI.h" />
     <ClInclude Include="Renderer\Material.h" />
@@ -301,9 +303,11 @@
     <ClInclude Include="Serialization\Serializable.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\Build\Assets\Materials\bee.mtrl" />
     <None Include="..\Build\Assets\Materials\box.mtrl" />
     <None Include="..\Build\Assets\Materials\emissive.mtrl" />
     <None Include="..\Build\Assets\Materials\multi.mtrl" />
+    <None Include="..\Build\Assets\Materials\skybox.mtrl" />
     <None Include="..\Build\Assets\Materials\spot.mtrl" />
     <None Include="..\Build\Assets\Materials\spot_lit.mtrl" />
     <None Include="..\Build\Assets\Scenes\basic.scn" />
@@ -332,6 +336,9 @@
     <None Include="..\Build\Assets\Shaders\Unlit\color.frag" />
     <None Include="..\Build\Assets\Shaders\Unlit\color.prog" />
     <None Include="..\Build\Assets\Shaders\Unlit\color.vert" />
+    <None Include="..\Build\Assets\Shaders\Unlit\skybox.frag" />
+    <None Include="..\Build\Assets\Shaders\Unlit\skybox.prog" />
+    <None Include="..\Build\Assets\Shaders\Unlit\skybox.vert" />
     <None Include="..\Build\Assets\Shaders\Unlit\texture.frag" />
     <None Include="..\Build\Assets\Shaders\Unlit\texture.prog" />
     <None Include="..\Build\Assets\Shaders\Unlit\texture.vert" />

@@ -20,5 +20,6 @@ namespace neu
 		Rect source;
 		Vector2 registration = Vector2{ 0.5f, 0.5f };
 		bool flipHorizontal = false;
+		bool depth_test = true;
 	};
 }

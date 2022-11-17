@@ -307,6 +307,7 @@
     <None Include="..\Build\Assets\Materials\box.mtrl" />
     <None Include="..\Build\Assets\Materials\emissive.mtrl" />
     <None Include="..\Build\Assets\Materials\multi.mtrl" />
+    <None Include="..\Build\Assets\Materials\reflection.mtrl" />
     <None Include="..\Build\Assets\Materials\skybox.mtrl" />
     <None Include="..\Build\Assets\Materials\spot.mtrl" />
     <None Include="..\Build\Assets\Materials\spot_lit.mtrl" />
@@ -336,6 +337,9 @@
     <None Include="..\Build\Assets\Shaders\Unlit\color.frag" />
     <None Include="..\Build\Assets\Shaders\Unlit\color.prog" />
     <None Include="..\Build\Assets\Shaders\Unlit\color.vert" />
+    <None Include="..\Build\Assets\Shaders\Unlit\reflection.frag" />
+    <None Include="..\Build\Assets\Shaders\Unlit\reflection.prog" />
+    <None Include="..\Build\Assets\Shaders\Unlit\reflection.vert" />
     <None Include="..\Build\Assets\Shaders\Unlit\skybox.frag" />
     <None Include="..\Build\Assets\Shaders\Unlit\skybox.prog" />
     <None Include="..\Build\Assets\Shaders\Unlit\skybox.vert" />

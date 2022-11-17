@@ -20,7 +20,7 @@ int main(int argc, char** argv)
 	neu::g_gui.Initialize(neu::g_renderer);
 
 	// load scene
-	auto scene = neu::g_resources.Get<neu::Scene>("Scenes/texture.scn");
+	auto scene = neu::g_resources.Get<neu::Scene>("Scenes/test.scn");
 
 	float x = 0;
 	glm::vec3 pos = { 0,0,0 };

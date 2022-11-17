@@ -570,5 +570,17 @@
     <None Include="..\Build\Assets\Shaders\Unlit\skybox.vert">
       <Filter>Resources\Shaders\Unlit</Filter>
     </None>
+    <None Include="..\Build\Assets\Shaders\Unlit\reflection.frag">
+      <Filter>Resources\Shaders\Unlit</Filter>
+    </None>
+    <None Include="..\Build\Assets\Shaders\Unlit\reflection.prog">
+      <Filter>Resources\Shaders\Unlit</Filter>
+    </None>
+    <None Include="..\Build\Assets\Shaders\Unlit\reflection.vert">
+      <Filter>Resources\Shaders\Unlit</Filter>
+    </None>
+    <None Include="..\Build\Assets\Materials\reflection.mtrl">
+      <Filter>Resources\Materials</Filter>
+    </None>
   </ItemGroup>
 </Project>

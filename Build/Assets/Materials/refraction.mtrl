@@ -1,5 +1,5 @@
 {
-  "program": "Shaders/unlit/reflection.prog",
+  "program": "Shaders/unlit/refraction.prog",
   "cubemap": "Textures/skyBox/",
   "cubemap_extension": ".jpg",
   "color": [

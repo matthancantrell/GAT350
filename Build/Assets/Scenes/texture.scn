@@ -2,7 +2,19 @@
   "actors": [
     {
       "type": "Actor",
-      "name": "Cube",
+      "name": "Skybox",
+      "components": [
+        {
+          "type": "ModelComponent",
+          "model_name": "Models/cube.obj",
+          "material_name": "Materials/skybox.mtrl",
+          "depth_test": false
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Dog",
       "transform": {
         "position": [
           0,

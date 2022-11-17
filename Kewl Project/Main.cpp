@@ -20,7 +20,7 @@ int main(int argc, char** argv)
 	neu::g_gui.Initialize(neu::g_renderer);
 
 	// load scene
-	auto scene = neu::g_resources.Get<neu::Scene>("Scenes/test.scn");
+	auto scene = neu::g_resources.Get<neu::Scene>("Scenes/texture.scn");
 
 	float x = 0;
 	glm::vec3 pos = { 0,0,0 };
@@ -36,7 +36,7 @@ int main(int argc, char** argv)
 		auto actor = scene->GetActorFromName("Dog");
 		if (actor)
 		{
-			//actor->m_transform.rotation = math::EulerToQuaternion(rot);
+			actor->m_transform.rotation = math::EulerToQuaternion(rot);
 		}
 		
 		ImGui::Begin("Rotation");

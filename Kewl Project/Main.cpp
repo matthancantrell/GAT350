@@ -26,6 +26,7 @@ int main(int argc, char** argv)
 	glm::vec3 pos = { 0,0,0 };
 	glm::vec3 rot{ 0,0,0 };
 	float ri = 1;
+	float interpolation = 1.0;
 
 	bool quit = false;
 	while (!quit)
@@ -40,16 +41,18 @@ int main(int argc, char** argv)
 			actor->m_transform.rotation = math::EulerToQuaternion(rot);
 		}
 
-		auto program = neu::g_resources.Get<neu::Program>("shaders/unlit/refraction.prog");
+		auto program = neu::g_resources.Get<neu::Program>("shaders/unlit/rr.prog");
 		if (program)
 		{
 			program->Use();
 			program->SetUniform("ri", ri);
+			program->SetUniform("interpolation", interpolation);
 		}
 		
 		ImGui::Begin("Rotation");
 		ImGui::DragFloat3("pos", &rot[0]);
 		ImGui::DragFloat("Refraction Index", &ri, 0.01f, 1, 3);
+		ImGui::DragFloat("Interpolation", &interpolation, 0.01f, 1, 3);
 		ImGui::End();
 
 		scene->Update();

@@ -594,5 +594,17 @@
     <None Include="..\Build\Assets\Materials\refraction.mtrl">
       <Filter>Resources\Materials</Filter>
     </None>
+    <None Include="..\Build\Assets\Shaders\Unlit\rr.frag">
+      <Filter>Resources\Shaders\Unlit</Filter>
+    </None>
+    <None Include="..\Build\Assets\Shaders\Unlit\rr.prog">
+      <Filter>Resources\Shaders\Unlit</Filter>
+    </None>
+    <None Include="..\Build\Assets\Shaders\Unlit\rr.vert">
+      <Filter>Resources\Shaders\Unlit</Filter>
+    </None>
+    <None Include="..\Build\Assets\Materials\rr.mtrl">
+      <Filter>Resources\Materials</Filter>
+    </None>
   </ItemGroup>
 </Project>

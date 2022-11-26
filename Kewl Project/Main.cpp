@@ -41,10 +41,11 @@ int main(int argc, char** argv)
 	while (!quit)
 	{
 		neu::Engine::Instance().Update();
+		if (neu::g_inputSystem.GetKeyState(neu::key_escape) == neu::InputSystem::KeyState::Pressed) quit = true;
 
 		neu::g_gui.BeginFrame(neu::g_renderer);
 
-		auto actor = scene->GetActorFromName("Dog");
+		auto actor = scene->GetActorFromName("Oscar");
 		if (actor)
 		{
 			actor->m_transform.rotation = math::EulerToQuaternion(rot);
@@ -77,8 +78,19 @@ int main(int argc, char** argv)
 		//render pass 1 (render to framebuffer)
 		glViewport(0, 0, 512, 512);
 		framebuffer->Bind();
+		neu::g_renderer.BeginFrame();
+		scene->PreRender(neu::g_renderer);
+		scene->Render(neu::g_renderer);
+		framebuffer->Unbind();
 
-		if (neu::g_inputSystem.GetKeyState(neu::key_escape) == neu::InputSystem::KeyState::Pressed) quit = true;
+		{
+			auto actor = scene->GetActorFromName("RTT");
+			if (actor)
+			{
+				actor->SetActive(true);
+			}
+		}
+		
 
 		neu::g_renderer.BeginFrame();
 
@@ -96,13 +108,13 @@ int main(int argc, char** argv)
 
 		// render pass 2 (render to screen)
 		glViewport(0, 0, 800, 600);
-
 		neu::g_renderer.BeginFrame();
 		scene->PreRender(neu::g_renderer);
 		scene->Render(neu::g_renderer);
+
 		neu::g_gui.Draw();
 
- 		neu::g_renderer.EndFrame();
+		neu::g_renderer.EndFrame();
 		neu::g_gui.EndFrame();
 	}
 	scene->RemoveAll();

@@ -48,7 +48,9 @@
 #include "Renderer/Material.h"
 #include "Renderer/VertexBuffer.h"
 #include "Renderer/Cubemap.h"
+#include "Renderer/FrameBuffer.h"
 
+#include "glm/glm.hpp"
 
 #include <memory>
 #include <vector>

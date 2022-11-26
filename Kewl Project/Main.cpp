@@ -19,6 +19,15 @@ int main(int argc, char** argv)
 	LOG("Window Initialized...");
 	neu::g_gui.Initialize(neu::g_renderer);
 
+	// Create FrameBuffer Texture
+	auto texture = std::make_shared<neu::Texture>();
+	texture->CreateTexture(512, 512);
+	neu::g_resources.Add<neu::Texture>("fb_texture", texture);
+
+	// create framebuffer
+	auto framebuffer = neu::g_resources.Get<neu::Framebuffer>("framebuffer", "fb_texture");
+	framebuffer->Unbind();
+
 	// load scene
 	auto scene = neu::g_resources.Get<neu::Scene>("Scenes/test.scn");
 
@@ -52,15 +61,43 @@ int main(int argc, char** argv)
 		ImGui::Begin("Rotation");
 		ImGui::DragFloat3("pos", &rot[0]);
 		ImGui::DragFloat("Refraction Index", &ri, 0.01f, 1, 3);
-		ImGui::DragFloat("Interpolation", &interpolation, 0.01f, 1, 3);
+		ImGui::DragFloat("Interpolation", &interpolation, 0.01f, -3, 3);
 		ImGui::End();
 
 		scene->Update();
+
+		{
+			auto actor = scene->GetActorFromName("RTT");
+			if (actor)
+			{
+				actor->SetActive(false);
+			}
+		}
+
+		//render pass 1 (render to framebuffer)
+		glViewport(0, 0, 512, 512);
+		framebuffer->Bind();
 
 		if (neu::g_inputSystem.GetKeyState(neu::key_escape) == neu::InputSystem::KeyState::Pressed) quit = true;
 
 		neu::g_renderer.BeginFrame();
 
+		scene->PreRender(neu::g_renderer);
+		scene->Render(neu::g_renderer);
+		framebuffer->Unbind();
+
+		{
+			auto actor = scene->GetActorFromName("RTT");
+			if (actor)
+			{
+				actor->SetActive(true);
+			}
+		}
+
+		// render pass 2 (render to screen)
+		glViewport(0, 0, 800, 600);
+
+		neu::g_renderer.BeginFrame();
 		scene->PreRender(neu::g_renderer);
 		scene->Render(neu::g_renderer);
 		neu::g_gui.Draw();

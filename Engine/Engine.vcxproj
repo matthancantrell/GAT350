@@ -310,6 +310,7 @@
     <None Include="..\Build\Assets\Materials\box.mtrl" />
     <None Include="..\Build\Assets\Materials\emissive.mtrl" />
     <None Include="..\Build\Assets\Materials\multi.mtrl" />
+    <None Include="..\Build\Assets\Materials\postprocess.mtrl" />
     <None Include="..\Build\Assets\Materials\reflection.mtrl" />
     <None Include="..\Build\Assets\Materials\refraction.mtrl" />
     <None Include="..\Build\Assets\Materials\rr.mtrl" />
@@ -320,6 +321,7 @@
     <None Include="..\Build\Assets\Scenes\basic.scn" />
     <None Include="..\Build\Assets\Scenes\basic_lit.scn" />
     <None Include="..\Build\Assets\Scenes\emissive.scn" />
+    <None Include="..\Build\Assets\Scenes\postprocess.scn" />
     <None Include="..\Build\Assets\Scenes\test.scn" />
     <None Include="..\Build\Assets\Scenes\texture.scn" />
     <None Include="..\Build\Assets\Shaders\basic.frag" />
@@ -337,6 +339,9 @@
     <None Include="..\Build\Assets\Shaders\normal_phong.frag" />
     <None Include="..\Build\Assets\Shaders\normal_phong.prog" />
     <None Include="..\Build\Assets\Shaders\normal_phong.vert" />
+    <None Include="..\Build\Assets\Shaders\PostProcess\postprocess.frag" />
+    <None Include="..\Build\Assets\Shaders\PostProcess\postprocess.prog" />
+    <None Include="..\Build\Assets\Shaders\PostProcess\postprocess.vert" />
     <None Include="..\Build\Assets\Shaders\texture_phong.frag" />
     <None Include="..\Build\Assets\Shaders\texture_phong.prog" />
     <None Include="..\Build\Assets\Shaders\texture_phong.vert" />

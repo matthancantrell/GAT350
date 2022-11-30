@@ -75,6 +75,9 @@
     <Filter Include="Source\externals\imgui">
       <UniqueIdentifier>{6fb61355-af5b-44c1-bd62-59662f2daae0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resources\Shaders\PostProcess">
+      <UniqueIdentifier>{78286657-dee4-4cb9-88f5-2b4374f69960}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Math\MathUtils.cpp">
@@ -617,6 +620,21 @@
     </None>
     <None Include="..\Build\Assets\Materials\rtt.mtrl">
       <Filter>Resources\Materials</Filter>
+    </None>
+    <None Include="..\Build\Assets\Shaders\PostProcess\postprocess.frag">
+      <Filter>Resources\Shaders\PostProcess</Filter>
+    </None>
+    <None Include="..\Build\Assets\Shaders\PostProcess\postprocess.prog">
+      <Filter>Resources\Shaders\PostProcess</Filter>
+    </None>
+    <None Include="..\Build\Assets\Shaders\PostProcess\postprocess.vert">
+      <Filter>Resources\Shaders\PostProcess</Filter>
+    </None>
+    <None Include="..\Build\Assets\Materials\postprocess.mtrl">
+      <Filter>Resources\Materials</Filter>
+    </None>
+    <None Include="..\Build\Assets\Scenes\postprocess.scn">
+      <Filter>Resources\Scenes</Filter>
     </None>
   </ItemGroup>
 </Project>

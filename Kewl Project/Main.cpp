@@ -1,5 +1,7 @@
 #include "Engine.h" 
-#include <iostream> 
+#include <iostream>
+
+#define POST_PROCESS
 
 int main(int argc, char** argv)
 {
@@ -25,7 +27,7 @@ int main(int argc, char** argv)
 	neu::g_resources.Add<neu::Texture>("fb_texture", texture);
 
 	// create framebuffer
-	auto framebuffer = neu::g_resources.Get<neu::Framebuffer>("framebuffer", "fb_texture");
+ 	auto framebuffer = neu::g_resources.Get<neu::Framebuffer>("framebuffer", "fb_texture");
 	framebuffer->Unbind();
 
 	// load scene
@@ -67,6 +69,7 @@ int main(int argc, char** argv)
 
 		scene->Update();
 
+
 		{
 			auto actor = scene->GetActorFromName("RTT");
 			if (actor)
@@ -76,7 +79,8 @@ int main(int argc, char** argv)
 		}
 
 		//render pass 1 (render to framebuffer)
-		glViewport(0, 0, 512, 512);
+		//glViewport(0, 0, 512, 512);
+		neu::g_renderer.SetViewport(0, 0, framebuffer->GetSize().x, framebuffer->GetSize().y);
 		framebuffer->Bind();
 		neu::g_renderer.BeginFrame();
 		scene->PreRender(neu::g_renderer);
@@ -90,7 +94,6 @@ int main(int argc, char** argv)
 				actor->SetActive(true);
 			}
 		}
-		
 
 		neu::g_renderer.BeginFrame();
 
@@ -107,7 +110,8 @@ int main(int argc, char** argv)
 		}
 
 		// render pass 2 (render to screen)
-		glViewport(0, 0, 800, 600);
+		//glViewport(0, 0, 800, 600);
+		neu::g_renderer.RestoreViewport();
 		neu::g_renderer.BeginFrame();
 		scene->PreRender(neu::g_renderer);
 		scene->Render(neu::g_renderer);

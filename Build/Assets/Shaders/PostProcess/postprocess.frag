@@ -4,11 +4,11 @@ in vec2 texcoord;
 
 out vec4 fcolor;
 
-uniform sampler2D diffuseMap;
+uniform sampler2D textureMap;
 
 void main()
 {
-    vec3 color = texture(diffuseMap, texcoord).rgb;
+    vec3 color = texture(textureMap, texcoord).rgb;
 
     // black / white
     //float avg = (color.r + color.g + color.b) / 3.0;
@@ -22,5 +22,5 @@ void main()
     //fcolor = vec4(vec3(0, avg, 0), 1);
  
     // regular
-    fcolor = texture(diffuseMap, texcoord);
+    fcolor = texture(textureMap, texcoord);
 }

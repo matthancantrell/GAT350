@@ -15,7 +15,7 @@ namespace neu
 
 	private:
 		float speed = 0;
-		float sensitivity = 0.1;
+		float sensitivity = 0.1f;
 
 		float m_yaw = 0;
 		float m_pitch = 0;

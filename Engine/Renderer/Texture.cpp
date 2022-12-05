@@ -42,6 +42,7 @@ namespace neu
             LOG(SDL_GetError());
             return false;
         }
+
         FlipSurface(surface);
 
         // create texture 
@@ -65,6 +66,7 @@ namespace neu
 
     bool Texture::CreateTexture(int width, int height)
     {
+        //matthan smells like bugnus
         m_target = GL_TEXTURE_2D;
         m_width = width;
         m_height = height;
@@ -79,7 +81,6 @@ namespace neu
         glTexParameteri(m_target, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glTexParameteri(m_target, GL_TEXTURE_WRAP_S, GL_CLAMP);
         glTexParameteri(m_target, GL_TEXTURE_WRAP_T, GL_CLAMP);
-
         return true;
     }
 
@@ -99,7 +100,6 @@ namespace neu
         glTexParameteri(m_target, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glTexParameteri(m_target, GL_TEXTURE_WRAP_S, GL_CLAMP);
         glTexParameteri(m_target, GL_TEXTURE_WRAP_T, GL_CLAMP);
-
         return true;
     }
 

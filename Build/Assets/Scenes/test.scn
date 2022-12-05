@@ -52,15 +52,15 @@
           0
         ],
         "scale": [
-          3,
-          3,
-          3
+          2,
+          2,
+          2
         ]
       },
       "components": [
         {
           "type": "ModelComponent",
-          "model_name": "Models/sphere.obj",
+          "model_name": "Models/quad.obj",
           "material_name": "Materials/rtt.mtrl"
         }
       ]
@@ -158,8 +158,8 @@
       "transform": {
         "position": [
           0,
-          0,
-          4
+          3,
+          15
         ],
         "rotation": [
           0,

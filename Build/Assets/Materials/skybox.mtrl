@@ -1,6 +1,6 @@
 {
   "program": "Shaders/unlit/skybox.prog",
-  "cubemap": "Textures/skyBox/",
+  "cubemap": "Textures/skyBox2/",
   "cubemap_extension": ".jpg",
   "color":[
 	1,

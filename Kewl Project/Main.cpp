@@ -30,7 +30,7 @@ int main(int argc, char** argv)
 	framebuffer->Unbind();
 
 	// load scene
-	auto scene = neu::g_resources.Get<neu::Scene>("Scenes/test.scn");
+	auto scene = neu::g_resources.Get<neu::Scene>("Scenes/final.scn");
 
 	float x = 0;
 	glm::vec3 rot{ 0,0,0 };

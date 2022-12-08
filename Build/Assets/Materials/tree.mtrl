@@ -1,0 +1,21 @@
+{
+  "program": "Shaders/normal_phong.prog",
+  "textures": [
+    "textures/Maple/texture.png",
+    "textures/Maple/texture_2.png",
+    "textures/Maple/texture_3.png",
+    "textures/Maple/texture_4.png",
+    "textures/Maple/texture_5.png",
+    "textures/Maple/texture_6.png",
+    "textures/Maple/texture_7.png",
+    "textures/Maple/texture_8.png"
+  ],
+  "uv_tiling": [ 1, 1 ],
+  "uv_offset": [ 0, 0 ],
+  "color": [
+    1,
+    1,
+    1
+  ],
+  "shininess": 256
+}

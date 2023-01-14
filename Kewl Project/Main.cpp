@@ -15,7 +15,7 @@ int main(int argc, char** argv)
 
 	LOG("Engine Initialized...");
 
-	neu::g_renderer.CreateWindow("Neumont", 800, 600);
+	neu::g_renderer.CreateWindow("Neumont", 1000, 800);
 
 	LOG("Window Initialized...");
 	neu::g_gui.Initialize(neu::g_renderer);
@@ -30,7 +30,7 @@ int main(int argc, char** argv)
 	framebuffer->Unbind();
 
 	// load scene
-	auto scene = neu::g_resources.Get<neu::Scene>("Scenes/final.scn");
+	auto scene = neu::g_resources.Get<neu::Scene>("Scenes/test.scn");
 
 	float x = 0;
 	glm::vec3 rot{ 0,0,0 };
@@ -45,34 +45,9 @@ int main(int argc, char** argv)
 
 		neu::g_gui.BeginFrame(neu::g_renderer);
 
-		auto actor = scene->GetActorFromName("Oscar");
-		if (actor)
-		{
-			actor->m_transform.rotation = math::EulerToQuaternion(rot);
-		}
-
-		auto program = neu::g_resources.Get<neu::Program>("shaders/unlit/texture.prog");
-		if (program)
-		{
-			program->Use();
-			program->SetUniform("ri", ri);
-		}
-		
-		ImGui::Begin("Howdy :D");
-		ImGui::DragFloat3("Rotation", &rot[0]);
-		ImGui::End();
-
 		scene->Update();
 
 		neu::g_renderer.BeginFrame();
-
-		{
-			auto actor = scene->GetActorFromName("RTT");
-			if (actor)
-			{
-				actor->SetActive(false);
-			}
-		}
 
 		////render pass 1 (render to framebuffer)
 		neu::g_renderer.SetViewport(0, 0, framebuffer->GetSize().x, framebuffer->GetSize().y);
@@ -82,14 +57,6 @@ int main(int argc, char** argv)
 		scene->PreRender(neu::g_renderer);
 		scene->Render(neu::g_renderer);
 		framebuffer->Unbind();
-
-		{
-			auto actor = scene->GetActorFromName("RTT");
-			if (actor)
-			{
-				actor->SetActive(true);
-			}
-		}
 
 		// render pass 2 (render to screen)
 		neu::g_renderer.RestoreViewport();
